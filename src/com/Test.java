@@ -30,7 +30,7 @@ public class Test {
             while(true){
                 try {
                     Thread.sleep(2000);
-                    System.out.println("开始取值1");
+                    System.out.println("开始取值2");
                     List<Integer> list = new LinkedList<>();
                     blockingQueue.drainTo(list);  //drainTo()将队列中的值全部从队列中移除，并赋值给对应集合
                     list.forEach(System.out::println);
