@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
 
+/***
+这是一个分支
+**/
 public class Test {
 
 
@@ -20,7 +23,7 @@ public class Test {
         product.scheduleAtFixedRate(() -> {
             int value = random.nextInt(101);
             try{
-                blockingQueue.offer(value);  //offer()方法就是网队列的尾部设置值
+                blockingQueue.offer(value);  //offer()方法就是网队列的尾部设置值 
             }catch(Exception ex){
                 ex.printStackTrace();
             }
