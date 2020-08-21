@@ -7,13 +7,13 @@ import java.util.Random;
 import java.util.concurrent.*;
 
 /***
-ÕâÊÇÒ»¸ö·ÖÖ§
+è¿™æ˜¯ä¸€ä¸ªåˆ†æ”¯
 **/
 public class Test {
 
 
     /**
-     * ÊµÀı»¯Ò»¸ö¶ÓÁĞ£¬¶ÓÁĞÖĞµÄÈİÁ¿Îª10
+     * å®ä¾‹åŒ–ä¸€ä¸ªé˜Ÿåˆ—ï¼Œé˜Ÿåˆ—ä¸­çš„å®¹é‡ä¸º10
      */
     private static BlockingQueue<Integer> blockingQueue = new LinkedBlockingQueue<>(10);
 
@@ -23,20 +23,20 @@ public class Test {
         product.scheduleAtFixedRate(() -> {
             int value = random.nextInt(101);
             try{
-                blockingQueue.offer(value);  //offer()·½·¨¾ÍÊÇÍø¶ÓÁĞµÄÎ²²¿ÉèÖÃÖµ 
+                blockingQueue.offer(value);  //offer()æ–¹æ³•å°±æ˜¯ç½‘é˜Ÿåˆ—çš„å°¾éƒ¨è®¾ç½®å€¼ 
             }catch(Exception ex){
                 ex.printStackTrace();
             }
-        }, 0, 200, TimeUnit.MILLISECONDS);  //Ã¿100ºÁÃëÖ´ĞĞÏß³Ì
+        }, 0, 200, TimeUnit.MILLISECONDS);  //æ¯100æ¯«ç§’æ‰§è¡Œçº¿ç¨‹
 
         new Thread(() -> {
             while(true){
                 try {
                     Thread.sleep(2000);
 					 Thread.sleep(2000);
-                    System.out.println("¿ªÊ¼È¡Öµ2");
+                    System.out.println("å¼€å§‹å–å€¼2");
                     List<Integer> list = new LinkedList<>();
-                    blockingQueue.drainTo(list);  //drainTo()½«¶ÓÁĞÖĞµÄÖµÈ«²¿´Ó¶ÓÁĞÖĞÒÆ³ı£¬²¢¸³Öµ¸ø¶ÔÓ¦¼¯ºÏ
+                    blockingQueue.drainTo(list);  //drainTo()å°†é˜Ÿåˆ—ä¸­çš„å€¼å…¨éƒ¨ä»é˜Ÿåˆ—ä¸­ç§»é™¤ï¼Œå¹¶èµ‹å€¼ç»™å¯¹åº”é›†åˆ
                     list.forEach(System.out::println);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
