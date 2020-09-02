@@ -53,11 +53,13 @@
       <artifactId>fastjson</artifactId>
       <version>1.2.54</version>
     </dependency>
+
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>3.4</version>
     </dependency>
+
     <dependency>
       <groupId>com.squareup.okhttp3</groupId>
       <artifactId>okhttp</artifactId>
@@ -77,6 +79,55 @@
       <groupId>com.squareup.okio</groupId>
       <artifactId>okio</artifactId>
       <version>1.15.0</version>
+    </dependency>
+
+    <!-- Spring核心依赖 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>5.1.14.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>5.1.14.RELEASE</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>5.1.14.RELEASE</version>
+    </dependency>
+
+    <!-- Spring dao依赖 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>5.1.14.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>5.1.14.RELEASE</version>
+    </dependency>
+
+    <!-- Spring web依赖 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>5.1.14.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>5.1.14.RELEASE</version>
+    </dependency>
+
+    <!-- Spring test依赖：方便做单元测试和集成测试 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>5.1.14.RELEASE</version>
     </dependency>
   </dependencies>
 
