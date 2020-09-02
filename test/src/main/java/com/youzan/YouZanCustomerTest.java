@@ -251,9 +251,9 @@ public class YouZanCustomerTest {
         try {
             //DefaultYZClient yzClient = new DefaultYZClient();
             TokenParameter tokenParameter = TokenParameter.self()
-                    .clientId(Content.CLIENTID)
-                    .clientSecret(Content.CLIENTSECRET)
-                    .grantId(Content.GRANTID)
+                    .clientId(Content.CLIENT_ID)
+                    .clientSecret(Content.CLIENT_SECRET)
+                    .grantId(Content.GRANT_ID)
                     .refresh(false)
                     .build();
             OAuthToken oAuthToken = yzClient.getOAuthToken(tokenParameter);
