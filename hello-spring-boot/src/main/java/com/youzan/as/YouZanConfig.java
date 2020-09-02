@@ -1,4 +1,4 @@
-package com.youzan;
+package com.youzan.as;
 /**
  * 有赞基本配置
  * @author dxt

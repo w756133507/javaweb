@@ -1,4 +1,4 @@
-package com.youzan;
+package com.youzan.as;
 /**
  *@Description TODO
  *@Author 王泽辉

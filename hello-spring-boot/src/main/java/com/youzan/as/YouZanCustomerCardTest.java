@@ -1,4 +1,4 @@
-package com.youzan;
+package com.youzan.as;
 /**
  * @projectName Test
  * @description: TODO
@@ -10,11 +10,12 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.youzan.cloud.open.sdk.common.exception.SDKException;
-import com.youzan.cloud.open.sdk.core.client.auth.Token;
 import com.youzan.cloud.open.sdk.core.client.core.DefaultYZClient;
+
 import com.youzan.cloud.open.sdk.core.client.core.YouZanClient;
 import com.youzan.cloud.open.sdk.core.oauth.model.OAuthToken;
 import com.youzan.cloud.open.sdk.core.oauth.token.TokenParameter;
+import com.youzan.cloud.open.sdk.core.client.auth.Token;
 import com.youzan.cloud.open.sdk.gen.v3_0_0.api.*;
 import com.youzan.cloud.open.sdk.gen.v3_0_0.model.*;
 import com.youzan.cloud.open.sdk.gen.v4_0_0.model.YouzanScrmCustomerCardDeleteParams;
@@ -23,11 +24,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 /***** @description: 会员卡信息
 　　* @author 王泽辉
 　　* @date 2020/8/31 12:02
 　　*/
-public class YouZanCustomerTest {
+public class YouZanCustomerCardTest {
     public static void main(String[] args) {
 
          //getToken(new DefaultYZClient());
@@ -251,9 +253,9 @@ public class YouZanCustomerTest {
         try {
             //DefaultYZClient yzClient = new DefaultYZClient();
             TokenParameter tokenParameter = TokenParameter.self()
-                    .clientId(Content.CLIENT_ID)
-                    .clientSecret(Content.CLIENT_SECRET)
-                    .grantId(Content.GRANT_ID)
+                    .clientId("4627cb89366371c68b")
+                    .clientSecret("170c9d30cf93097eba1b4743829cd3c9")
+                    .grantId("90909493")
                     .refresh(false)
                     .build();
             OAuthToken oAuthToken = yzClient.getOAuthToken(tokenParameter);

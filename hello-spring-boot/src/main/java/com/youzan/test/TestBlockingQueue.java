@@ -1,4 +1,4 @@
-package com;
+package com.youzan.test;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;

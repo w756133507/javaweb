@@ -1,4 +1,4 @@
-package com.youzan;
+package com.youzan.as;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 

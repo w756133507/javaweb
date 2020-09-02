@@ -1,6 +1,7 @@
-package com.web;
+package com.youzan.web;
 
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -13,10 +14,15 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "/youzan/push")
 public class YouzanPushController {
-
-
     //private static final String CLIENT_ID="edb04b22672a9cb65f"; //应用的 client_id
     //private static final String CLIENT_SECRET="bc260c07482076c5ef616f78868cfc78";//应用的 client_secret
+
+    @GetMapping("/test")
+    public Object test(){
+        System.out.println("——————");
+        return buildSuccessResponse();
+    }
+
     @GetMapping("/receive")
     public Object receive(@RequestBody Map<String,Object> map){
         System.out.println("——————");

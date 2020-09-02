@@ -1,4 +1,4 @@
-package com;
+package com.youzan.test;
 
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
