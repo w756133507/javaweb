@@ -5,9 +5,10 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
+        <version>2.3.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -19,6 +20,10 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -33,22 +38,22 @@
         </dependency>
         <!--有赞start-->
         <dependency>
-            <groupId>com.youzan.cloud</groupId>
+            <groupId>com.all.youzan</groupId>
             <artifactId>open-sdk-core</artifactId>
             <version>1.0.7-RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>com.youzan.cloud</groupId>
+            <groupId>com.all.youzan</groupId>
             <artifactId>open-sdk-common</artifactId>
             <version>1.0.7-RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>com.youzan.cloud</groupId>
+            <groupId>com.all.youzan</groupId>
             <artifactId>open-sdk-api</artifactId>
             <version>1.0.7-RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>com.youzan.cloud</groupId>
+            <groupId>com.all.youzan</groupId>
             <artifactId>open-sdk-gen</artifactId>
             <version>1.0.7.202008131153-RELEASE</version>
         </dependency>
@@ -74,6 +79,11 @@
         </dependency>
         <!--有赞end-->
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
@@ -83,10 +93,31 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-    </dependencies>
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>2.6.12</version>
+        </dependency>
 
+        <!--cxf-->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-spring-boot-starter-jaxws</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+
+    </dependencies>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerVersion>${java.version}</compilerVersion>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

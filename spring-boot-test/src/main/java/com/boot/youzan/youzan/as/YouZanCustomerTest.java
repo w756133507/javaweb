@@ -1,4 +1,4 @@
-package com.youzan.as;
+package com.boot.youzan.youzan.as;
 /**
  * @projectName Test
  * @description: TODO
@@ -9,6 +9,7 @@ package com.youzan.as;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.boot.youzan.youzan.as.Content;
 import com.youzan.cloud.open.sdk.common.exception.SDKException;
 import com.youzan.cloud.open.sdk.core.client.auth.Token;
 import com.youzan.cloud.open.sdk.core.client.core.DefaultYZClient;
@@ -24,17 +25,17 @@ import java.util.List;
 
 
 /***** @description: 会员卡信息
-　　* @author 王泽辉
-　　* @date 2020/8/31 12:02
-　　*/
+ 　　* @author 王泽辉
+ 　　* @date 2020/8/31 12:02
+ 　　*/
 public class YouZanCustomerTest {
     public static void main(String[] args) {
 
-         //getToken(new DefaultYZClient());
-         //createRember();
-         //delRember();
+        //getToken(new DefaultYZClient());
+        //createRember();
+        //delRember();
         //delRemberBySaler();
-           getRemberList();
+        getRemberList();
         // updateRember();
     }
     /**
@@ -44,7 +45,7 @@ public class YouZanCustomerTest {
      */
     public static void   getRemberList() {
         try {
-           //YouZanClient 建议全局唯一,使用 spring 容器管理
+            //YouZanClient 建议全局唯一,使用 spring 容器管理
             DefaultYZClient yzClient = new DefaultYZClient();
             Token token = new Token( getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
@@ -155,35 +156,35 @@ public class YouZanCustomerTest {
      *@Date 2020/8/30 13:53
      */
     public static void   createOrder() {
-     try {
-         DefaultYZClient yzClient = new DefaultYZClient();
-         Token token = new Token( getToken(yzClient).getAccessToken());
-         System.out.println(token.getAccessToken());
-         // 传入参数
-         JSONObject jsonObject = new JSONObject();
-         jsonObject.put("goods_id",609186196);
-         jsonObject.put("num",1);
+        try {
+            DefaultYZClient yzClient = new DefaultYZClient();
+            Token token = new Token( getToken(yzClient).getAccessToken());
+            System.out.println(token.getAccessToken());
+            // 传入参数
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("goods_id",609186196);
+            jsonObject.put("num",1);
 
-         YouzanTradeBillGoodsUrlGet youzanTradeBillGoodsUrlGet = new YouzanTradeBillGoodsUrlGet();
-         //创建参数对象,并设置参数
-         YouzanTradeBillGoodsUrlGetParams youzanTradeBillGoodsUrlGetParams = new YouzanTradeBillGoodsUrlGetParams();
-         youzanTradeBillGoodsUrlGetParams.setKdtId(90909493L);
-         youzanTradeBillGoodsUrlGetParams.setOrderFrom("cart");
-         youzanTradeBillGoodsUrlGetParams.setOrderType(0L);
-         System.out.println(jsonObject.toJSONString());
+            YouzanTradeBillGoodsUrlGet youzanTradeBillGoodsUrlGet = new YouzanTradeBillGoodsUrlGet();
+            //创建参数对象,并设置参数
+            YouzanTradeBillGoodsUrlGetParams youzanTradeBillGoodsUrlGetParams = new YouzanTradeBillGoodsUrlGetParams();
+            youzanTradeBillGoodsUrlGetParams.setKdtId(90909493L);
+            youzanTradeBillGoodsUrlGetParams.setOrderFrom("cart");
+            youzanTradeBillGoodsUrlGetParams.setOrderType(0L);
+            System.out.println(jsonObject.toJSONString());
 
-         JSONArray jsonArray = new JSONArray();
-         jsonArray.add(jsonObject);
+            JSONArray jsonArray = new JSONArray();
+            jsonArray.add(jsonObject);
 
-         youzanTradeBillGoodsUrlGetParams.setItemList(jsonArray.toJSONString());
-         youzanTradeBillGoodsUrlGet.setAPIParams(youzanTradeBillGoodsUrlGetParams);
-         YouzanTradeBillGoodsUrlGetResult result = yzClient.invoke(youzanTradeBillGoodsUrlGet, token, YouzanTradeBillGoodsUrlGetResult.class);
-         JSONObject jsonObject1  = JSON.parseObject(JSON.toJSONString(result.getResponse().getIsSuccess()));
-         System.out.println(jsonObject1);
+            youzanTradeBillGoodsUrlGetParams.setItemList(jsonArray.toJSONString());
+            youzanTradeBillGoodsUrlGet.setAPIParams(youzanTradeBillGoodsUrlGetParams);
+            YouzanTradeBillGoodsUrlGetResult result = yzClient.invoke(youzanTradeBillGoodsUrlGet, token, YouzanTradeBillGoodsUrlGetResult.class);
+            JSONObject jsonObject1  = JSON.parseObject(JSON.toJSONString(result.getResponse().getIsSuccess()));
+            System.out.println(jsonObject1);
         }catch (SDKException e){
             e.printStackTrace();
         }
-     }
+    }
     /**
      *@Description 删除用户的会员卡
      *@Author 王泽辉
@@ -229,7 +230,7 @@ public class YouZanCustomerTest {
             Token token = new Token(getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
 
-             //创建参数对象,并设置参数
+            //创建参数对象,并设置参数
             YouzanScrmCardDelete youzanScrmCardDelete = new YouzanScrmCardDelete();
             //创建参数对象,并设置参数
             YouzanScrmCardDeleteParams youzanScrmCardDeleteParams = new YouzanScrmCardDeleteParams();

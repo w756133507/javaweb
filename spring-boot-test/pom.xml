@@ -6,12 +6,13 @@
     <artifactId>youzan-boot</artifactId>
     <name>youzan-boot</name>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
-
 
     <properties>
         <java.version>1.8</java.version>
         <spring-boot.version>2.0.3.RELEASE</spring-boot.version>
+       <!-- <spring-boot.version>2.2.5.RELEASE</spring-boot.version>-->
     </properties>
 
     <dependencies>
@@ -52,7 +53,7 @@
         <dependency>
             <groupId>com.all.youzan</groupId>
             <artifactId>open-sdk-gen</artifactId>
-            <version>1.0.7.202008131153-RELEASE</version>
+            <version>1.0.7.202011021743-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -102,6 +103,11 @@
             <version>7.2.11</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.11</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -116,6 +122,15 @@
     </dependencyManagement>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerVersion>${java.version}</compilerVersion>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

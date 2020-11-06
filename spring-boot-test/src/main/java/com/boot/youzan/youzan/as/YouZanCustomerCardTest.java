@@ -1,4 +1,4 @@
-package com.youzan.as;
+package com.boot.youzan.youzan.as;
 /**
  * @projectName Test
  * @description: TODO
@@ -7,6 +7,7 @@ package com.youzan.as;
  */
 
 import com.alibaba.fastjson.JSON;
+import com.boot.youzan.youzan.as.Content;
 import com.youzan.cloud.open.sdk.common.exception.SDKException;
 import com.youzan.cloud.open.sdk.core.client.core.DefaultYZClient;
 
@@ -39,10 +40,10 @@ public class YouZanCustomerCardTest {
 
          //getToken(new DefaultYZClient());
 
-           //createCustomer();
-           //updateCustomer();
-               getCustomer();
-           // getCustomerList();
+        // createCustomer();
+         //updateCustomer();
+           getCustomer();
+        // getCustomerList();
          //delRember();
         //delRemberBySaler();
         //  getRemberList();
@@ -61,18 +62,17 @@ public class YouZanCustomerCardTest {
             YouzanScrmCustomerCreate youzanScrmCustomerCreate = new YouzanScrmCustomerCreate();
             //创建参数对象,并设置参数
             YouzanScrmCustomerCreateParams youzanScrmCustomerCreateParams = new YouzanScrmCustomerCreateParams();
-            youzanScrmCustomerCreateParams.setMobile("17702067821");
-            YouzanScrmCustomerCreateParams.YouzanScrmCustomerCreateParamsCustomercreate  customerParams = new YouzanScrmCustomerCreateParams.YouzanScrmCustomerCreateParamsCustomercreate();
-            customerParams.setName("王泽辉");
-            customerParams.setBirthday("1997-12-06");
-            //性别，0：未知；1：男；2：女
-            customerParams.setGender(Short.parseShort("1"));
-            customerParams.setRemark("胡轩同步会员到有赞商城");
-            youzanScrmCustomerCreateParams.setCustomerCreate(customerParams);
+            youzanScrmCustomerCreateParams.setMobile("17702067821");//客户电话
 
+            YouzanScrmCustomerCreateParams.YouzanScrmCustomerCreateParamsCustomercreate  customerParams = new YouzanScrmCustomerCreateParams.YouzanScrmCustomerCreateParamsCustomercreate();
+            customerParams.setName("王泽辉");//客户姓名
+            customerParams.setBirthday("1997-12-06");//生日
+            customerParams.setGender(Short.parseShort("1"));//性别，0：未知；1：男；2：女
+            customerParams.setRemark("胡轩同步会员到有赞商城");//备注
+            youzanScrmCustomerCreateParams.setCustomerCreate(customerParams);
+            customerParams.setAscriptionKdtId(Integer.parseInt(Content.GRANT_ID));
             YouzanScrmCustomerCreateParams.YouzanScrmCustomerCreateParamsContactaddress  addressParams = new YouzanScrmCustomerCreateParams.YouzanScrmCustomerCreateParamsContactaddress();
-            //地域编号
-            addressParams.setAreaCode(430014);
+            addressParams.setAreaCode(430014);//地域编号
             customerParams.setContactAddress(addressParams);
 
             youzanScrmCustomerCreate.setAPIParams(youzanScrmCustomerCreateParams);
@@ -101,8 +101,10 @@ public class YouZanCustomerCardTest {
             //创建参数对象,并设置参数
             YouzanScrmCustomerUpdateParams youzanScrmCustomerUpdateParams= new YouzanScrmCustomerUpdateParams();
             YouzanScrmCustomerUpdateParams.YouzanScrmCustomerUpdateParamsAccount account=new YouzanScrmCustomerUpdateParams.YouzanScrmCustomerUpdateParamsAccount();
-            account.setAccountId("17702067821");
-            account.setAccountType("Mobile");
+//            account.setAccountId("17702067821");
+//            account.setAccountType("Mobile");
+            account.setAccountId("8255402861");
+            account.setAccountType("YouZanAccount");
             youzanScrmCustomerUpdateParams.setAccount(account);
 
             YouzanScrmCustomerUpdateParams.YouzanScrmCustomerUpdateParamsCustomerupdate customerParams=new  YouzanScrmCustomerUpdateParams.YouzanScrmCustomerUpdateParamsCustomerupdate();
@@ -111,6 +113,7 @@ public class YouZanCustomerCardTest {
             customerParams.setBirthday("1997-12-06");//生日
             customerParams.setGender(Short.parseShort("1"));//性别，0：未知；1：男；2：女
             youzanScrmCustomerUpdateParams.setCustomerUpdate(customerParams);
+            customerParams.setAscriptionKdtId(Integer.parseInt(Content.GRANT_ID));
             YouzanScrmCustomerUpdateParams.YouzanScrmCustomerUpdateParamsContactaddress  addressParams = new  YouzanScrmCustomerUpdateParams.YouzanScrmCustomerUpdateParamsContactaddress();
             addressParams.setAreaCode(430014);//地域编号
             customerParams.setContactAddress(addressParams);
@@ -159,8 +162,8 @@ public class YouZanCustomerCardTest {
              //创建参数对象,并设置参数
             YouzanScrmCustomerGetParams youzanScrmCustomerGetParams = new YouzanScrmCustomerGetParams();
             YouzanScrmCustomerGetParams.YouzanScrmCustomerGetParamsAccount account=new YouzanScrmCustomerGetParams.YouzanScrmCustomerGetParamsAccount();
-            account.setAccountId("17702067821");
-            account.setAccountType("Mobile");
+            account.setAccountId("8255402861");
+            account.setAccountType("YouZanAccount");
             youzanScrmCustomerGetParams.setAccount(account);
             youzanScrmCustomerGet.setAPIParams(youzanScrmCustomerGetParams);
 
@@ -237,9 +240,9 @@ public class YouZanCustomerCardTest {
         try {
             //DefaultYZClient yzClient = new DefaultYZClient();
             TokenParameter tokenParameter = TokenParameter.self()
-                    .clientId("4627cb89366371c68b")
-                    .clientSecret("170c9d30cf93097eba1b4743829cd3c9")
-                    .grantId("90909493")
+                    .clientId(Content.CLIENT_ID)
+                    .clientSecret(Content.CLIENT_SECRET)
+                    .grantId(Content.GRANT_ID)
                     .refresh(false)
                     .build();
             OAuthToken oAuthToken = yzClient.getOAuthToken(tokenParameter);
