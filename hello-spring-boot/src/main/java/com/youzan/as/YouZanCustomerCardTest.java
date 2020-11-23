@@ -36,7 +36,7 @@ import com.youzan.cloud.open.sdk.gen.v4_0_0.model.YouzanScrmCustomerCardDeletePa
 　　*/
 public class YouZanCustomerCardTest {
     public static void main(String[] args) {
-////
+
          //getToken(new DefaultYZClient());
 
            //createCustomer();
