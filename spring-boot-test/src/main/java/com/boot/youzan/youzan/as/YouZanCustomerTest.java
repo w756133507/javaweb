@@ -9,6 +9,7 @@ package com.boot.youzan.youzan.as;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.boot.youzan.youzan.Db.GetToken;
 import com.boot.youzan.youzan.as.Content;
 import com.youzan.cloud.open.sdk.common.exception.SDKException;
 import com.youzan.cloud.open.sdk.core.client.auth.Token;
@@ -47,7 +48,7 @@ public class YouZanCustomerTest {
         try {
             //YouZanClient 建议全局唯一,使用 spring 容器管理
             DefaultYZClient yzClient = new DefaultYZClient();
-            Token token = new Token( getToken(yzClient).getAccessToken());
+            Token token = new Token( GetToken.getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
 
             YouzanScrmCardList youzanScrmCardList = new YouzanScrmCardList();
@@ -71,7 +72,7 @@ public class YouZanCustomerTest {
     public static void   updateRember() {
         try {
             DefaultYZClient yzClient = new DefaultYZClient();
-            Token token = new Token( getToken(yzClient).getAccessToken());
+            Token token = new Token( GetToken.getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
             YouzanScrmCardUpdate youzanScrmCardUpdate = new YouzanScrmCardUpdate();
 
@@ -116,7 +117,7 @@ public class YouZanCustomerTest {
     public static void   createRember() {
         try {
             DefaultYZClient yzClient = new DefaultYZClient();
-            Token token = new Token( getToken(yzClient).getAccessToken());
+            Token token = new Token( GetToken.getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
             YouzanScrmCardCreate youzanScrmCardCreate = new YouzanScrmCardCreate();
 
@@ -158,7 +159,7 @@ public class YouZanCustomerTest {
     public static void   createOrder() {
         try {
             DefaultYZClient yzClient = new DefaultYZClient();
-            Token token = new Token( getToken(yzClient).getAccessToken());
+            Token token = new Token( GetToken.getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
             // 传入参数
             JSONObject jsonObject = new JSONObject();
@@ -194,7 +195,7 @@ public class YouZanCustomerTest {
         try {
             //YouZanClient 建议全局唯一,使用 spring 容器管理
             DefaultYZClient yzClient = new DefaultYZClient();
-            Token token = new Token(getToken(yzClient).getAccessToken());
+            Token token = new Token(GetToken.getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
 
             YouzanScrmCustomerCardDelete youzanScrmCustomerCardDelete = new YouzanScrmCustomerCardDelete();
@@ -227,7 +228,7 @@ public class YouZanCustomerTest {
         try {
             //YouZanClient 建议全局唯一,使用 spring 容器管理
             DefaultYZClient yzClient = new DefaultYZClient();
-            Token token = new Token(getToken(yzClient).getAccessToken());
+            Token token = new Token(GetToken.getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
 
             //创建参数对象,并设置参数
@@ -243,27 +244,4 @@ public class YouZanCustomerTest {
             e.printStackTrace();
         }
     }
-    /**
-     *@Description 获取token
-     *@Author 王泽辉
-     *@Date 2020/8/30 13:53
-     */
-    public static OAuthToken  getToken(YouZanClient yzClient){
-        try {
-            //DefaultYZClient yzClient = new DefaultYZClient();
-            TokenParameter tokenParameter = TokenParameter.self()
-                    .clientId(Content.CLIENT_ID)
-                    .clientSecret(Content.CLIENT_SECRET)
-                    .grantId(Content.GRANT_ID)
-                    .refresh(false)
-                    .build();
-            OAuthToken oAuthToken = yzClient.getOAuthToken(tokenParameter);
-            System.out.println("获取token"+ oAuthToken);
-            return oAuthToken;
-        }catch (SDKException e){
-            e.printStackTrace();
-        }
-        return null;
-    }
-
 }
