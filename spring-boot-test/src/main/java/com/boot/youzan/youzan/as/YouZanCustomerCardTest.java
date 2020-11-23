@@ -7,24 +7,28 @@ package com.boot.youzan.youzan.as;
  */
 
 import com.alibaba.fastjson.JSON;
-import com.boot.youzan.youzan.Db.GetToken;
+import com.boot.youzan.youzan.as.Content;
 import com.youzan.cloud.open.sdk.common.exception.SDKException;
-import com.youzan.cloud.open.sdk.core.client.auth.Token;
 import com.youzan.cloud.open.sdk.core.client.core.DefaultYZClient;
+
 import com.youzan.cloud.open.sdk.core.client.core.YouZanClient;
 import com.youzan.cloud.open.sdk.core.oauth.model.OAuthToken;
 import com.youzan.cloud.open.sdk.core.oauth.token.TokenParameter;
+import com.youzan.cloud.open.sdk.core.client.auth.Token;
+
 import com.youzan.cloud.open.sdk.gen.v3_0_0.api.YouzanScrmCardDelete;
 import com.youzan.cloud.open.sdk.gen.v3_0_0.api.YouzanScrmCustomerCreate;
 import com.youzan.cloud.open.sdk.gen.v3_0_0.api.YouzanScrmCustomerUpdate;
 import com.youzan.cloud.open.sdk.gen.v3_0_0.model.*;
-import com.youzan.cloud.open.sdk.gen.v3_1_0.api.YouzanScrmCustomerGet;
 import com.youzan.cloud.open.sdk.gen.v3_1_0.model.YouzanScrmCustomerGetParams;
+import com.youzan.cloud.open.sdk.gen.v3_1_0.api.YouzanScrmCustomerGet;
 import com.youzan.cloud.open.sdk.gen.v3_1_2.api.YouzanScrmCustomerSearch;
 import com.youzan.cloud.open.sdk.gen.v3_1_2.model.YouzanScrmCustomerSearchParams;
 import com.youzan.cloud.open.sdk.gen.v3_1_2.model.YouzanScrmCustomerSearchResult;
 import com.youzan.cloud.open.sdk.gen.v4_0_0.api.YouzanScrmCustomerCardDelete;
 import com.youzan.cloud.open.sdk.gen.v4_0_0.model.YouzanScrmCustomerCardDeleteParams;
+
+
 
 
 /***** @description: 客戶信息(注意引入的版本)
@@ -38,9 +42,12 @@ public class YouZanCustomerCardTest {
 
         // createCustomer();
          //updateCustomer();
-          // getCustomer();
-        //delRember();
-
+           getCustomer();
+        // getCustomerList();
+         //delRember();
+        //delRemberBySaler();
+        //  getRemberList();
+        // updateRember();
     }
     /**
      *@Description 创建会员
@@ -50,7 +57,7 @@ public class YouZanCustomerCardTest {
     public static void   createCustomer() {
         try {
             DefaultYZClient yzClient = new DefaultYZClient();
-            Token token = new Token( GetToken.getToken(yzClient).getAccessToken());
+            Token token = new Token( getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
             YouzanScrmCustomerCreate youzanScrmCustomerCreate = new YouzanScrmCustomerCreate();
             //创建参数对象,并设置参数
@@ -88,7 +95,7 @@ public class YouZanCustomerCardTest {
     public static void   updateCustomer() {
         try {
             DefaultYZClient yzClient = new DefaultYZClient();
-            Token token = new Token( GetToken.getToken(yzClient).getAccessToken());
+            Token token = new Token( getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
             YouzanScrmCustomerUpdate youzanScrmCustomerUpdate = new YouzanScrmCustomerUpdate();
             //创建参数对象,并设置参数
@@ -126,7 +133,7 @@ public class YouZanCustomerCardTest {
         try {
            //YouZanClient 建议全局唯一,使用 spring 容器管理
             DefaultYZClient yzClient = new DefaultYZClient();
-            Token token = new Token( GetToken.getToken(yzClient).getAccessToken());
+            Token token = new Token( getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
 
             YouzanScrmCustomerSearch youzanScrmCustomerSearch = new YouzanScrmCustomerSearch();
@@ -148,17 +155,15 @@ public class YouZanCustomerCardTest {
         try {
             //YouZanClient 建议全局唯一,使用 spring 容器管理
             DefaultYZClient yzClient = new DefaultYZClient();
-            Token token = new Token( GetToken.getToken(yzClient).getAccessToken());
+            Token token = new Token( getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
 
             YouzanScrmCustomerGet youzanScrmCustomerGet = new YouzanScrmCustomerGet();
              //创建参数对象,并设置参数
             YouzanScrmCustomerGetParams youzanScrmCustomerGetParams = new YouzanScrmCustomerGetParams();
             YouzanScrmCustomerGetParams.YouzanScrmCustomerGetParamsAccount account=new YouzanScrmCustomerGetParams.YouzanScrmCustomerGetParamsAccount();
-//            account.setAccountId("8255402861");
-//            account.setAccountType("YouZanAccount");
-            account.setAccountId("17373131675");
-            account.setAccountType("Mobile");
+            account.setAccountId("8255402861");
+            account.setAccountType("YouZanAccount");
             youzanScrmCustomerGetParams.setAccount(account);
             youzanScrmCustomerGet.setAPIParams(youzanScrmCustomerGetParams);
 
@@ -177,7 +182,7 @@ public class YouZanCustomerCardTest {
         try {
             //YouZanClient 建议全局唯一,使用 spring 容器管理
             DefaultYZClient yzClient = new DefaultYZClient();
-            Token token = new Token(GetToken.getToken(yzClient).getAccessToken());
+            Token token = new Token(getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
 
             YouzanScrmCustomerCardDelete youzanScrmCustomerCardDelete = new YouzanScrmCustomerCardDelete();
@@ -186,12 +191,12 @@ public class YouZanCustomerCardTest {
 
             YouzanScrmCustomerCardDeleteParams.YouzanScrmCustomerCardDeleteParamsParams params=new YouzanScrmCustomerCardDeleteParams.YouzanScrmCustomerCardDeleteParamsParams();
             params.setKdtId(90909493L);
-            params.setCardAlias("Y2g0kvs6kewiid");
-            YouzanScrmCustomerCardDeleteParams.YouzanScrmCustomerCardDeleteParamsUser user=new YouzanScrmCustomerCardDeleteParams.YouzanScrmCustomerCardDeleteParamsUser();
-            user.setAccountId("17601603978");
-            user.setAccountType(2);
-            params.setUser(user);
             a.setParams(params);
+
+            YouzanScrmCustomerCardDeleteParams.YouzanScrmCustomerCardDeleteParamsUser user=new YouzanScrmCustomerCardDeleteParams.YouzanScrmCustomerCardDeleteParamsUser();
+            user.setAccountId("");
+            user.setAccountType(1);
+            params.setUser(user);
             youzanScrmCustomerCardDelete.setAPIParams(a);
 
             YouzanScrmCustomerCardDeleteResult result = yzClient.invoke(youzanScrmCustomerCardDelete, token, YouzanScrmCustomerCardDeleteResult.class);
@@ -210,7 +215,7 @@ public class YouZanCustomerCardTest {
         try {
             //YouZanClient 建议全局唯一,使用 spring 容器管理
             DefaultYZClient yzClient = new DefaultYZClient();
-            Token token = new Token(GetToken.getToken(yzClient).getAccessToken());
+            Token token = new Token(getToken(yzClient).getAccessToken());
             System.out.println(token.getAccessToken());
 
              //创建参数对象,并设置参数
@@ -226,4 +231,27 @@ public class YouZanCustomerCardTest {
             e.printStackTrace();
         }
     }
+    /**
+     *@Description 获取token
+     *@Author 王泽辉
+     *@Date 2020/8/30 13:53
+     */
+    public static OAuthToken  getToken(YouZanClient yzClient){
+        try {
+            //DefaultYZClient yzClient = new DefaultYZClient();
+            TokenParameter tokenParameter = TokenParameter.self()
+                    .clientId(Content.CLIENT_ID)
+                    .clientSecret(Content.CLIENT_SECRET)
+                    .grantId(Content.GRANT_ID)
+                    .refresh(false)
+                    .build();
+            OAuthToken oAuthToken = yzClient.getOAuthToken(tokenParameter);
+            System.out.println("获取token"+ oAuthToken);
+            return oAuthToken;
+        }catch (SDKException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
